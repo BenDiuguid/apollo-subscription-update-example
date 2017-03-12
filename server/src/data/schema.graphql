@@ -1,0 +1,20 @@
+type Person {
+  id: Int!
+  name: String!
+}
+
+type Query {
+  person(id: Int!): Person
+  persons: [Person]
+}
+
+type Mutation {
+  changeName (
+    personId: Int!
+    name: String!
+  ): Person
+}
+
+type Subscription {
+  nameChanged: Person
+}
