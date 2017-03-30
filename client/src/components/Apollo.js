@@ -1,6 +1,9 @@
 import React from 'react';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws';
+import {
+  SubscriptionClient,
+  addGraphQLSubscriptions,
+} from 'subscriptions-transport-ws';
 import { ApolloProvider } from 'react-apollo';
 
 const networkInterface = createNetworkInterface({
@@ -41,4 +44,4 @@ const Apollo = ({ children }) => (
   </ApolloProvider>
 );
 
-export default Apollo
+export default Apollo;

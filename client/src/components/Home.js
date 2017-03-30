@@ -4,8 +4,8 @@ import { graphql } from 'react-apollo';
 import List from './List';
 
 const Home = ({ data: { loading, error, person } }) => {
-  if(loading) return <div>loading</div>;
-  if(error) return <div>{JSON.stringify(error)}</div>;
+  if (loading) return <div>loading</div>;
+  if (error) return <div>{JSON.stringify(error)}</div>;
 
   return person
     ? <div>

@@ -1,10 +1,7 @@
 import { find } from 'lodash';
 import { pubsub } from './schema';
 
-const persons = [
-  { id: 1, name: 'BEN' },
-  { id: 2, name: 'STEPHEN' },
-];
+const persons = [{ id: 1, name: 'BEN' }, { id: 2, name: 'STEPHEN' }];
 
 const resolveFunctions = {
   Query: {

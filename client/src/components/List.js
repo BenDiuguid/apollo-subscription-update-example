@@ -24,7 +24,7 @@ const personsQuery = gql`
 class List extends React.Component {
   state = {
     subscription: null,
-  }
+  };
 
   componentDidMount() {
     this.subscription = this.subscribe();
@@ -43,21 +43,23 @@ class List extends React.Component {
         const newPersons = [
           ...persons.slice(0, index),
           updatedPerson,
-          ...persons.slice(index+1)
+          ...persons.slice(index + 1),
         ];
         return {
-          persons: newPersons
+          persons: newPersons,
         };
       },
     });
-  }
+  };
 
   render() {
-    return <div>
-      {this.props.data.loading ? <div>loading</div> :
-        this.props.data.persons.map(p => <p key={p.id}>{p.name}</p>)
-      }
-    </div>;
+    return (
+      <div>
+        {this.props.data.loading
+          ? <div>loading</div>
+          : this.props.data.persons.map(p => <p key={p.id}>{p.name}</p>)}
+      </div>
+    );
   }
 }
 

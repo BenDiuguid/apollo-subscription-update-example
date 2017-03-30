@@ -8,8 +8,8 @@ export default () => (
   <Apollo>
     <Router>
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route component={NoMatch}/>
+        <Route exact path="/" component={Home} />
+        <Route component={NoMatch} />
       </Switch>
     </Router>
   </Apollo>

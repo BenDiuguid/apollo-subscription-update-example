@@ -14,13 +14,18 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/graphql', graphqlExpress({
-  schema,
-}));
+app.use(
+  '/graphql',
+  graphqlExpress({
+    schema,
+  }),
+);
 
-app.use('/graphiql', graphiqlExpress({
-  endpointURL: '/graphql',
-  query: `
+app.use(
+  '/graphiql',
+  graphiqlExpress({
+    endpointURL: '/graphql',
+    query: `
 # This mutation will publish the changed person to any clients subscribed.
 mutation {
   changeName(personId: 1, name: "wasBEN") {
@@ -29,7 +34,8 @@ mutation {
   }
 }
   `,
-}));
+  }),
+);
 
 const server = createServer(app);
 
@@ -52,5 +58,5 @@ new SubscriptionServer(
   {
     path: '/subscriptions',
     server,
-  }
+  },
 );
