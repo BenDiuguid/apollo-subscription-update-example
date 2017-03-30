@@ -16,19 +16,19 @@
     "build": "backpack build"
   },
   "devDependencies": {
-    "backpack-core": "^0.2.0",
-    "eslint": "^3.17.1",
+    "backpack-core": "^0.2.1",
+    "eslint": "^3.18.0",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.1"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
-    "cors": "^2.8.1",
+    "cors": "^2.8.3",
     "express": "^4.15.2",
     "graphql": "^0.9.1",
     "graphql-server-express": "^0.6.0",
-    "graphql-subscriptions": "^0.3.0",
-    "graphql-tools": "^0.10.1",
+    "graphql-subscriptions": "^0.3.1",
+    "graphql-tools": "^0.11.0",
     "lodash": "^4.17.4",
     "subscriptions-transport-ws": "^0.5.5-alpha.0"
   }
