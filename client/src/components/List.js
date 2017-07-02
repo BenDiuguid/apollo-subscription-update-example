@@ -13,7 +13,7 @@ const changeNameSubscription = gql`
 `;
 
 const personsQuery = gql`
-  query  {
+  query {
     persons {
       id
       name
@@ -22,8 +22,9 @@ const personsQuery = gql`
 `;
 
 class List extends React.Component {
+  // eslint-disable-next-line
   state = {
-    subscription: null,
+    subscription: null
   };
 
   componentDidMount() {
@@ -34,21 +35,23 @@ class List extends React.Component {
     this.subscription.unsubscribe();
   }
 
+  // eslint-disable-next-line
   subscribe = () => {
     return this.props.data.subscribeToMore({
       document: changeNameSubscription,
       updateQuery: ({ persons }, { subscriptionData, variables }) => {
+        debugger;
         const updatedPerson = subscriptionData.data.nameChanged;
         const index = findIndex(persons, ['id', updatedPerson.id]);
         const newPersons = [
           ...persons.slice(0, index),
           updatedPerson,
-          ...persons.slice(index + 1),
+          ...persons.slice(index + 1)
         ];
         return {
-          persons: newPersons,
+          persons: newPersons
         };
-      },
+      }
     });
   };
 
@@ -57,7 +60,11 @@ class List extends React.Component {
       <div>
         {this.props.data.loading
           ? <div>loading</div>
-          : this.props.data.persons.map(p => <p key={p.id}>{p.name}</p>)}
+          : this.props.data.persons.map(p =>
+              <p key={p.id}>
+                {p.name}
+              </p>
+            )}
       </div>
     );
   }

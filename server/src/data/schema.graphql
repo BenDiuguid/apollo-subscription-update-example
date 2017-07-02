@@ -18,3 +18,9 @@ type Mutation {
 type Subscription {
   nameChanged: Person
 }
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

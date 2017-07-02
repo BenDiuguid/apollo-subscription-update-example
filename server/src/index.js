@@ -2,10 +2,10 @@ import { createServer } from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
+import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import cors from 'cors';
-
-import { schema, subscriptionManager } from './data/schema';
+import { schema } from './data/schema';
 
 const PORT = process.env.PORT || 8080;
 
@@ -18,7 +18,7 @@ app.use(
   '/graphql',
   graphqlExpress({
     schema,
-  }),
+  })
 );
 
 app.use(
@@ -34,7 +34,7 @@ mutation {
   }
 }
   `,
-  }),
+  })
 );
 
 const server = createServer(app);
@@ -46,17 +46,12 @@ server.listen(PORT, () => {
 // eslint-disable-next-line
 new SubscriptionServer(
   {
-    subscriptionManager,
-
-    // the onSubscribe function is called for every new subscription
-    // and we use it to set the GraphQL context for this subscription
-    // onSubscribe: (msg, params) => {
-    //   console.log('onSubscribe');
-    //   return true;
-    // },
+    execute,
+    subscribe,
+    schema,
   },
   {
     path: '/subscriptions',
     server,
-  },
+  }
 );
